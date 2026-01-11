@@ -4,32 +4,15 @@ import { Button } from '@/components/ui/button';
 const Index = () => {
   const [triggered, setTriggered] = useState(false);
   const [countdown, setCountdown] = useState(5);
-  const audioRef = useRef<HTMLAudioElement | null>(null);
   const screamRef = useRef<HTMLAudioElement | null>(null);
-  const horrorMusicRef = useRef<HTMLAudioElement | null>(null);
 
   useEffect(() => {
-    audioRef.current = new Audio('https://assets.mixkit.co/active_storage/sfx/2869/2869-preview.mp3');
     screamRef.current = new Audio('https://assets.mixkit.co/active_storage/sfx/2015/2015-preview.mp3');
-    horrorMusicRef.current = new Audio('https://assets.mixkit.co/active_storage/sfx/2910/2910-preview.mp3');
-    
-    audioRef.current.loop = true;
-    audioRef.current.volume = 0.15;
-    horrorMusicRef.current.loop = true;
-    horrorMusicRef.current.volume = 0.4;
     
     return () => {
-      if (audioRef.current) {
-        audioRef.current.pause();
-        audioRef.current = null;
-      }
       if (screamRef.current) {
         screamRef.current.pause();
         screamRef.current = null;
-      }
-      if (horrorMusicRef.current) {
-        horrorMusicRef.current.pause();
-        horrorMusicRef.current = null;
       }
     };
   }, []);
@@ -37,17 +20,9 @@ const Index = () => {
   const triggerScreamer = () => {
     setTriggered(true);
     
-    if (audioRef.current) {
-      audioRef.current.pause();
-    }
-    
     if (screamRef.current) {
       screamRef.current.volume = 1.0;
       screamRef.current.play().catch(console.error);
-    }
-    
-    if (horrorMusicRef.current) {
-      horrorMusicRef.current.play().catch(console.error);
     }
     
     document.body.style.overflow = 'hidden';
@@ -63,9 +38,7 @@ const Index = () => {
   }, [countdown, triggered]);
 
   const handleStart = () => {
-    if (audioRef.current) {
-      audioRef.current.play().catch(console.error);
-    }
+    setCountdown(5);
   };
 
   const reset = () => {
@@ -75,15 +48,6 @@ const Index = () => {
     if (screamRef.current) {
       screamRef.current.pause();
       screamRef.current.currentTime = 0;
-    }
-    
-    if (horrorMusicRef.current) {
-      horrorMusicRef.current.pause();
-      horrorMusicRef.current.currentTime = 0;
-    }
-    
-    if (audioRef.current) {
-      audioRef.current.play().catch(console.error);
     }
     
     document.body.style.overflow = 'auto';
