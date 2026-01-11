@@ -9,10 +9,10 @@ const Index = () => {
 
   useEffect(() => {
     audioRef.current = new Audio('https://assets.mixkit.co/active_storage/sfx/2869/2869-preview.mp3');
-    screamRef.current = new Audio('https://assets.mixkit.co/active_storage/sfx/1993/1993-preview.mp3');
+    screamRef.current = new Audio('https://www.soundjay.com/human/sounds/scream-1.mp3');
     
     audioRef.current.loop = true;
-    audioRef.current.volume = 0.3;
+    audioRef.current.volume = 0.2;
     
     return () => {
       if (audioRef.current) {
@@ -110,11 +110,11 @@ const Index = () => {
           }}
         >
           <img
-            src="https://cdn.poehali.dev/projects/ffe972c8-4fc9-4c5b-9d4c-b9d391b439c8/files/796f2f3b-dcb9-4c5b-9d4c-b9d391b439c8.jpg"
+            src="https://cdn.poehali.dev/projects/ffe972c8-4fc9-4642-a31d-3ddbf68a7861/files/8ecebc8f-4c7a-4900-b309-8516c6780b6c.jpg"
             alt="screamer"
             className="w-full h-full object-cover animate-pulse"
             style={{
-              animation: 'shake 0.1s infinite, pulse 0.5s infinite',
+              animation: 'shake 0.05s infinite, pulse 0.3s infinite',
             }}
           />
           
