@@ -3,7 +3,7 @@ import { Button } from '@/components/ui/button';
 
 const Index = () => {
   const [triggered, setTriggered] = useState(false);
-  const [countdown, setCountdown] = useState(5);
+  const [countdown, setCountdown] = useState(1);
   const screamRef = useRef<HTMLAudioElement | null>(null);
 
   useEffect(() => {
@@ -38,12 +38,12 @@ const Index = () => {
   }, [countdown, triggered]);
 
   const handleStart = () => {
-    setCountdown(5);
+    setCountdown(1);
   };
 
   const reset = () => {
     setTriggered(false);
-    setCountdown(5);
+    setCountdown(1);
     
     if (screamRef.current) {
       screamRef.current.pause();
