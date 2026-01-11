@@ -26,15 +26,6 @@ const Index = () => {
     };
   }, []);
 
-  useEffect(() => {
-    if (countdown > 0 && !triggered) {
-      const timer = setTimeout(() => setCountdown(countdown - 1), 1000);
-      return () => clearTimeout(timer);
-    } else if (countdown === 0 && !triggered) {
-      triggerScreamer();
-    }
-  }, [countdown, triggered]);
-
   const triggerScreamer = () => {
     setTriggered(true);
     
@@ -49,6 +40,15 @@ const Index = () => {
     
     document.body.style.overflow = 'hidden';
   };
+
+  useEffect(() => {
+    if (countdown > 0 && !triggered) {
+      const timer = setTimeout(() => setCountdown(countdown - 1), 1000);
+      return () => clearTimeout(timer);
+    } else if (countdown === 0 && !triggered) {
+      triggerScreamer();
+    }
+  }, [countdown, triggered]);
 
   const handleStart = () => {
     if (audioRef.current) {
